@@ -11,11 +11,11 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker Image
-          command:
+          command: |
             docker build -t $IMAGE_NAME:latest .
       - run:
           name: Push Docker Image
-          command:
+          command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker push $IMAGE_NAME:latest
 workflows:
